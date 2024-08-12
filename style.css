@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;1,400");
+/* Importa a fonte 'Asap' do Google Fonts para ser usada no site. */
+* {
+  box-sizing: border-box;
+}/* Define que o box-sizing de todos os elementos será 'border-box', o que significa que padding e border são incluídos na largura e altura total dos elementos. */
+body {
+  margin: 0;
+  font-family: 'Asap', 'Poppins', sans-serif;
+  text-shadow: #000 0 0 10px;
+}/* Remove a margem padrão do body, define a fonte padrão do corpo e adiciona uma sombra de texto sutil para melhorar a legibilidade. */
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background: #111;
+}/* Define o container como um flexbox com direção de coluna, ocupando toda a largura e altura da viewport. O fundo é definido como preto (#111). */
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+  }
+}/* Para telas maiores que 1024px, o container muda para organizar os itens em uma linha (flex-direction: row). */
+.item {
+  position: relative;
+  flex: calc(100vw / 6) 1 1;
+  background-size: cover;
+  overflow: hidden;
+  filter: saturate(90%);
+  transition: 1s;
+}/* Define cada item como flexível com largura proporcional (1/6 da largura da viewport). A imagem de fundo cobre todo o item, e o filtro de saturação é aplicado para ajustar a cor. Transições suaves são definidas para efeitos. */
+.item:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(25deg, rgba(0,0,0,.9), rgba(0,0,0,0));
+}/* Adiciona um gradiente linear sobre cada item para melhorar o contraste e tornar o texto mais legível. */
+.item:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+  animation: borderPulse 5s infinite;
+}
+/* Todos os itens, exceto o último, têm uma borda inferior animada. A animação 'borderPulse' faz a borda pulsar suavemente. */
+@media (min-width: 1024px) {
+  .item:not(:last-child) {
+    border-right: 1px solid #ccc;
+    border-bottom: none;
+  }
+}
+/* Em telas maiores, a borda inferior é removida e substituída por uma borda à direita para criar uma aparência de grade. */
+.item:hover {
+  flex-basis: 40%;
+  filter: saturate(120%);
+}
+/* Ao passar o mouse sobre um item, ele se expande para ocupar 40% da largura e a saturação da imagem de fundo aumenta, destacando-o. */
+@media (min-width: 1024px) {
+  .item:hover {
+    flex-basis: 75%;
+  }
+}/* Em telas maiores, o item se expande ainda mais ao ser clicado, ocupando 75% da largura disponível. */
+.item:hover .quote {
+  opacity: 1;
+  transform: translateX(0);
+}/*  Primeiro valor (45%): Representa a posição horizontal da imagem (da esquerda para a direita).
+    Segundo valor (25%): Representa a posição vertical da imagem (de cima para baixo). */
+/* A citação dentro do item torna-se totalmente visível e desliza para sua posição final quando o item é clicado. */
+.item:nth-child(1) {
+  background-image: url("https://wallpapers.com/images/hd/4k-ultra-hd-art-of-joker-smoking-d7nmo9szyssoh4mh.jpg");
+  background-position: 50% 35%;
+}/* Define a imagem de fundo específica e sua posição para o primeiro item. */
+.item:nth-child(2) {
+  background-image: url("https://wallpapercave.com/wp/wp3224395.jpg");
+  background-position: 70% 25%;
+}/* Define a imagem de fundo específica e sua posição para o segundo item. */
+.item:nth-child(3) {
+  background-image: url("sephiroth-final-fantasy-7-remake-uhdpaper.com-4K-3.1550.jpg");
+  background-position: 52% 8%;
+}/* Define a imagem de fundo específica e sua posição para o terceiro item. */
+.item:nth-child(4) {
+  background-image: url("https://images3.alphacoders.com/261/thumb-1920-261955.jpg");
+  background-position: 50% 100%;
+}/* Define a imagem de fundo específica e sua posição para o quarto item. */
+.item:nth-child(5) {
+  background-image: url("loki-season-2-series-tom-hiddleston-4k-wallpaper-uhdpaper.com-90@1@n.jpg");
+  background-position: 49% 25%;
+}/* Define a imagem de fundo específica e sua posição para o quinto item. */
+.item:nth-child(6) {
+  background-image: url("https://w0.peakpx.com/wallpaper/334/478/HD-wallpaper-metallica-hetfiled-james.jpg");
+  background-position: 0% 0%;
+}/* Define a imagem de fundo específica e sua posição para o sexto item. */
+.quote {
+  position: absolute;
+  color: #fff;
+  bottom: 35%;
+  left: 5rem;
+  width: calc(100% - 10rem);
+  opacity: 0;
+  transition: 1s;
+  transform: translateX(50%);
+}/* Define o posicionamento da citação dentro do item. A citação está inicialmente invisível e fora do lugar, mas desliza para dentro e torna-se visível ao passar o mouse sobre o item. */
+@media (min-width: 512px) {
+  .quote {
+    left: 15%;
+    bottom: 35%;
+    width: 20vw;
+  }
+}/* Ajusta a posição da citação em telas de tamanho médio. */
+@media (min-width: 1024px) {
+  .quote {
+    left: 15%;
+    bottom: 35%;
+    width: 30vw;
+  }
+}/* Ajusta a posição e o tamanho da citação em telas grandes. */
+.quote p {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.7rem;
+  font-size: 1.4rem;
+  text-wrap: balance;
+  font-style: italic;
+}/* Estiliza o texto da citação, adicionando um estilo itálico e ajustando o tamanho e a margem do parágrafo. */
+.quote p:before, .quote p:after {
+  position: absolute;
+  font-size: 5.5rem;
+  opacity: .6;
+}/* Adiciona as aspas antes e depois do texto da citação com opacidade reduzida para um efeito estético. */
+.quote p:before {
+  content: "“";
+  top: 4rem;
+  left: -2rem;
+  transform: translate(-100%, -100%);
+}/* Coloca a aspas de abertura no início da citação. */
+.quote p:after {
+  content: "”";
+  bottom: 2rem;
+  right: -2rem;
+  transform: translate(100%, 100%);
+}/* Coloca a aspas de fechamento no final da citação. */
+.quote span {
+  display: block;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-top: 3rem;
+  text-align: right;
+}/* Estiliza o nome do autor da citação, colocando-o em um bloco separado, alinhado à direita e com um tamanho de fonte maior. */
+/* @keyframes borderPulse {
+  0% {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    border-color: rgba(255, 255, 255, 0.8);
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+} */
+@keyframes borderGlow {
+    0% {
+      border-color: rgba(255, 255, 255, 0.3);
+      border-width: 2px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+      border-color: rgba(255, 255, 255, 1);
+      border-width: 4px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+      border-color: rgba(255, 255, 255, 0.3);
+      border-width: 2px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+  }
+  
+  .item {
+    border: 2px solid rgba(255, 255, 255, 0.3); /* Inicialmente define a borda do item */
+    border-radius: 8px; /* Adiciona bordas arredondadas para um visual mais moderno */
+    animation: borderGlow 3s ease-in-out infinite; /* Aplica a animação ao item */
+  }
+  
+/* Animação que faz a borda dos itens pulsar entre tons de branco, criando um efeito visual dinâmico. */
+/* @keyframes defini uma animação. 
+O símbolo @ é uma notação especial que indica que você está usando uma regra de at-rule, que é uma regra CSS com uma sintaxe especial. 
+No caso de @keyframes, ele define a sequência de etapas (ou "frames") de uma animação. */
+
+/* Animação de Zoom abaixo */
+/* @keyframes zoomIn {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .item:hover {
+    animation: zoomIn 3s ease-in-out infinite;
+  } */
+
+/* @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+  
+  .item:hover {
+    animation: rotate 2s infinite;
+  } */
+
+/*  Animação de Pulsar */
+/* @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  /* Animação de Opacidade */
+  /* .item:hover {
+    animation: pulse 1.5s infinite;
+  } */ 
+  
+  /* @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .item:hover {
+    animation: fade 2s infinite;
+  } */
+footer {
+    background-color: #333; /* Cor de fundo escura */
+    color: #fff;            /* Texto branco */
+    text-align: center;     /* Alinhamento do texto ao centro */
+    padding: 0px;          /* Espaçamento interno */
+    position: fixed;        /* Fixa o rodapé na parte inferior da página */
+    bottom: 0;              /* Posiciona o rodapé na parte inferior */
+    width: 100%;            /* Faz o rodapé ocupar toda a largura da página */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0); /* Sombra sutil para um efeito de elevação */
+    opacity: 0;             /* Começa invisível */
+    transition: opacity 0.5s ease; /* Transição suave para a visibilidade */
+}
+
+/* Mostra o rodapé ao passar o mouse sobre a área de conteúdo   /* Torna o rodapé visível */
+body:hover footer {
+    opacity: 1;            
+}
+
+/* Se desejar que o rodapé apareça somente quando o mouse estiver sobre ele, 
+   você pode adicionar um container ao redor do conteúdo principal. Exemplo: */
+.container:hover + footer {
+    opacity: 0;             /* Torna o rodapé visível quando o mouse estiver sobre o container */
+}
